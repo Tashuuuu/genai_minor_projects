@@ -1,0 +1,1 @@
+# genai_minor_projects

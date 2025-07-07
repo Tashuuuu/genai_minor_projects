@@ -1,6 +1,4 @@
 # Goal: Write a Python script that reads .txt file and:
-# 1. Counts how many times the word "you" appears.
-# 2. Finds the most frequent word (excluding common words like "the", "and").
 
 # Open and read file
 with open("poem.txt", "r") as file:
@@ -8,7 +6,8 @@ with open("poem.txt", "r") as file:
     print(content)
 
 # Split text into words
-words = content.split()
+w = content.split()
+words = [word.lower() for word in w]
 
 # Use dictionaries to count words
 def count_words():
@@ -20,4 +19,11 @@ def count_words():
             data_dict[word] = 1
     return data_dict
 
-count_words()
+data = count_words()
+
+# Goal1. Counts how many times the word "you" appears:
+data["you"]
+
+# Goal2. Finds the most frequent word.
+from collections import Counter
+Counter(words).most_common(1)

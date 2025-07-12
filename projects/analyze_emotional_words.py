@@ -45,6 +45,11 @@ def count_word(word):
     return count
 
 # 2. Calculate what percentage of the total words are emotional.
-total_emo_words = count_word("love") + count_word("hurt") + count_word("fear")
+emo_words = ["love", "hurt", "fear", "sad", "joyous", "delighted", "overjoyed", "gleeful", "thankful", "festive", "satisfied", "sunny", "jubilant", "jovial", "fun-loving", "lighthearted", "glorious", "innocent", "gratified", "euphoric", "playful", "courageous", "energetic", "liberated", "optimistic", "frisky", "animated", "spirited", "thrilled", "wonderful", "funny", "intelligent", "exhilarated", "spunky", "youthful", "vigorous", "tickled", "creative", "constructive", "helpful", "resourceful", "pleased", "encouraged", "surprised", "calm", "comfortable", "content", "quiet", "certain", "relaxed", "serene", "bright", "blessed", "balanced", "grateful", "carefree", "fulfilled", "genuine", "authentic", "forgiving", "sincere", "uplifted", "unburdened", "confident", "self-sufficient", "glowing", "radiant", "beaming", "reflective", "smiling", "grounded", "unhurried", "open-minded", "efficient", "non-controlling", "unassuming", "trusted", "fluid", "light", "spontaneous", "aware", "healthy", "meditative", "still", "rested", "waiting", "laughing", "graceful", "natural", "steady", "centered", "placid", "alive", "charged", "delirious", "eager", "discomforted", "intoxicated", "roused", "stimulated", "stirred", "titillated", "rocked", "triumphant", "wild", "amazed", "astonished", "astounded", "awed", "bewildered", "energized", "dumbfounded", "flabbergasted", "floored", "jarred", "jolted", "nonplussed", "overcome", "incredible", "shaken", "shocked", "speechless", "staggered", "startled", "stunned", "stupefied", "thunderstruck", "happy", "blissful", "captivated", "cheerful", "ecstatic", "elated", "dazed", "excellent", "exuberant", "fantastic", "grand", "great", "heavenly", "pleasant", "jolly", "joyful", "lively", "magnificent", "special", "splendid", "super", "terrific", "excited"]
+total_emo_words = 0
+
+for i in emo_words:
+    total_emo_words += count_word(i)
+
 total_words = len(words)
 emo_words_percentage = (total_emo_words / total_words) * 100

@@ -18,19 +18,9 @@ I want to become a teacher because I believe that all students are unique in the
 
 # Goal:
 # 1. Count how many times specific emotional words (e.g., "love", "hurt", "fear") appear.
-# For list:
-love_appear = data.count("love")
-words = [word.lower() for word in data.split()]
+# This code is perfect, above one won't count "love." but this one will.
 def count_word(word):
-    count = 0
-    for i in words:
-        if i == word:
-            count += 1
-    return count
-count_word("love")
-
-# For string: This code is perfect, above one won't count "love." but this one will.
-def count_word(word):
+    word = word.lower()
     count = data.count(word)
     k = count
     new_data = data
@@ -53,3 +43,29 @@ for i in emo_words:
 
 total_words = len(words)
 emo_words_percentage = (total_emo_words / total_words) * 100
+
+
+
+
+# 1. Define emotional words (as a SET for faster lookups)
+emotional_words = {"love", "hurt", "fear", "sad", "joyous", "delighted"}
+
+# 2. Count emotional words in ONE pass
+def count_emotional_words(text):
+    words = text.lower().split()
+    emotional_count = 0
+    
+    # Remove punctuation from each word and check against the set
+    for word in words:
+        cleaned_word = word.strip(".,!?;:\"'()[]{}")  # Basic punctuation stripping
+        if cleaned_word in emotional_words:
+            emotional_count += 1
+    
+    return emotional_count
+
+# 3. Calculate percentage
+total_emo_words = count_emotional_words(data)
+total_words = len(data.split())
+emo_percentage = (total_emo_words / max(total_words, 1)) * 100  # Avoid division by zero
+
+print(f"Found {total_emo_words} emotional words ({emo_percentage:.2f}% of text)")

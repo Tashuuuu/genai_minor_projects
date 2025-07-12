@@ -29,14 +29,22 @@ def count_word(word):
     return count
 count_word("love")
 
-# For string:
+# For string: This code is perfect, above one won't count "love." but this one will.
 def count_word(word):
     count = data.count(word)
-    i = data.find(word)
-    j = i + len(word) - 1
+    k = count
+    new_data = data
+    while k > 0:
+        i = new_data.find(word) - 1
+        j = i + len(word) + 1
+        if new_data[i].isalpha() or new_data[j].isalpha():
+            count -= 1
+        new_data = new_data.replace(word, '', 1)
+        k -= 1
+
     return count
 
-
-print(count_word("love"))
-
 # 2. Calculate what percentage of the total words are emotional.
+total_emo_words = count_word("love") + count_word("hurt") + count_word("fear")
+total_words = len(words)
+emo_words_percentage = (total_emo_words / total_words) * 100
